@@ -1,0 +1,16 @@
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+        name: Checkout
+      - uses: Dahlgren/actions-hemtt@master
+        name: HEMTT
+        with:
+          command: build --release
+      - uses: actions/upload-artifact@master
+        name: Upload Artifacts
+        with:
+          name: '@anrop_unsung_jsrs'
+          path: releases/1.0.0/@anrop_unsung_jsrs
